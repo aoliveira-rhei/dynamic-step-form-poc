@@ -72,6 +72,10 @@ export const DynamicStepForm = () => {
         <div className="p-8 max-w-4xl mx-auto">
             <h1 className="text-3xl font-bold mb-8">Dynamic Step Form</h1>
 
+            <h2 className="text-lg font-semibold mb-8 text-red-500">
+                Open the network tab to see the requests being made.
+            </h2>
+
             {selectedSteps.length > 0 && (
                 <div className="mb-6">
                     <h2 className="text-sm font-semibold text-gray-600 mb-2">Selected Path:</h2>
