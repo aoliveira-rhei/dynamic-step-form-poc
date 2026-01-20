@@ -1,7 +1,5 @@
 export type ComponentType = 'root' | 'badge' | 'select_item';
 
-export type ChildrenDisplayType = 'badge_list' | 'grouped_select' | 'select';
-
 export interface FormStep {
   id: string;
   path: string;
@@ -15,7 +13,6 @@ export interface FormStep {
   isDefault: boolean | null;
   hasChildren: boolean;
   childrenCount?: number;
-  childrenDisplayType?: ChildrenDisplayType;
   children: FormStep[] | null;
 }
 

@@ -8,7 +8,6 @@ import { SimpleSelect } from './SimpleSelect';
 export const DynamicStepForm = () => {
     const [selectedSteps, setSelectedSteps] = useState<SelectedStep[]>([]);
     const [currentChildren, setCurrentChildren] = useState<FormStep[]>([]);
-    const [currentDisplayType, setCurrentDisplayType] = useState<string | null>(null);
 
     useEffect(() => {
         loadRoot();
@@ -19,8 +18,24 @@ export const DynamicStepForm = () => {
 
         if (response.children) {
             setCurrentChildren(response.children);
-            setCurrentDisplayType(response.childrenDisplayType || 'badge_list');
         }
+    };
+
+    const inferDisplayType = (children: FormStep[]): 'badge_list' | 'grouped_select' | 'select' => {
+        if (children.length === 0) return 'badge_list';
+
+        const firstChild = children[0];
+
+        if (firstChild.component === 'badge') {
+            return 'badge_list';
+        }
+
+        if (firstChild.component === 'select_item') {
+            const hasGroups = children.some(child => child.uiGroup !== null);
+            return hasGroups ? 'grouped_select' : 'select';
+        }
+
+        return 'badge_list';
     };
 
     const handleBadgeClick = async (step: FormStep) => {
@@ -41,7 +56,6 @@ export const DynamicStepForm = () => {
 
         if (response.children) {
             setCurrentChildren(response.children);
-            setCurrentDisplayType(response.childrenDisplayType || 'badge_list');
         }
     };
 
@@ -64,9 +78,10 @@ export const DynamicStepForm = () => {
 
         if (response.children) {
             setCurrentChildren(response.children);
-            setCurrentDisplayType(response.childrenDisplayType || 'badge_list');
         }
     };
+
+    const currentDisplayType = inferDisplayType(currentChildren);
 
     return (
         <div className="p-8 max-w-4xl mx-auto">

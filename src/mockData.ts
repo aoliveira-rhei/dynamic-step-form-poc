@@ -8,7 +8,6 @@ const rootResponse = {
   "isDefault": null,
   "hasChildren": true,
   "childrenCount": 2,
-  "childrenDisplayType": "badge_list",
   "children": [
     {
       "id": "image_engine",
@@ -21,7 +20,6 @@ const rootResponse = {
       "isDefault": null,
       "hasChildren": true,
       "childrenCount": 5,
-      "childrenDisplayType": "badge_list",
       "children": null
     },
     {
@@ -35,7 +33,6 @@ const rootResponse = {
       "isDefault": null,
       "hasChildren": true,
       "childrenCount": 1,
-      "childrenDisplayType": "select",
       "children": null
     }
   ]
@@ -53,7 +50,6 @@ const imageEngineResponse = {
   "isDefault": null,
   "hasChildren": true,
   "childrenCount": 2,
-  "childrenDisplayType": "badge_list",
   "children": [
     {
       "id": "format_picker",
@@ -65,8 +61,7 @@ const imageEngineResponse = {
       "isDefault": null,
       "children": null,
       "path": "/image_engine/format_picker",
-      "hasChildren": true,
-      "childrenDisplayType": "grouped_select"
+      "hasChildren": true
     },
     {
       "id": "size_picker",
@@ -78,8 +73,7 @@ const imageEngineResponse = {
       "isDefault": null,
       "children": null,
       "path": "/image_engine/size",
-      "hasChildren": true,
-      "childrenDisplayType": "grouped_select"
+      "hasChildren": true
     }
   ]
 } as const;
@@ -123,22 +117,8 @@ const formatPickerResponse = {
   "component": "badge",
   "uiGroup": null,
   "tier": null,
-  "default_value": {
-    "id": "yt_avatar",
-    "displayKey": "label.youtube_avatar",
-    "displayValue": "YouTube Avatar",
-    "icon": "youtube",
-    "component": "select_item",
-    "uiGroup": "avatar_styles",
-    "tier": null,
-    "children": null,
-    "path": "/image_engine/social_media/yt_avatar",
-    "hasChildren": true,
-    "childrenDisplayType": "badge_list"
-  },
   "hasChildren": true,
   "childrenCount": 3,
-  "childrenDisplayType": "grouped_select",
   "children": [
     {
       "id": "yt_avatar",
@@ -151,8 +131,7 @@ const formatPickerResponse = {
       "isDefault": null,
       "children": null,
       "path": "/image_engine/social_media/yt_avatar",
-      "hasChildren": true,
-      "childrenDisplayType": "badge_list"
+      "hasChildren": true
     },
     {
       "id": "insta_avatar",
@@ -165,8 +144,7 @@ const formatPickerResponse = {
       "isDefault": null,
       "children": null,
       "path": "/image_engine/social_media/insta_avatar",
-      "hasChildren": true,
-      "childrenDisplayType": "badge_list"
+      "hasChildren": true
     },
     {
       "id": "linkedin_avatar",
@@ -179,8 +157,7 @@ const formatPickerResponse = {
       "isDefault": null,
       "children": null,
       "path": "/image_engine/social_media/linkedin_avatar",
-      "hasChildren": true,
-      "childrenDisplayType": "badge_list"
+      "hasChildren": true
     }
   ]
 } as const;
@@ -196,7 +173,6 @@ const youtubeAvatarResponse = {
   "tier": null,
   "isDefault": null,
   "hasChildren": true,
-  "childrenDisplayType": "badge_list",
   "children": [
     {
       "id": "youtube_avatar_style",
@@ -209,8 +185,7 @@ const youtubeAvatarResponse = {
       "isDefault": null,
       "children": null,
       "path": "/image_engine/format_picker/youtube_avatar/youtube_avatar_style",
-      "hasChildren": true,
-      "childrenDisplayType": "select"
+      "hasChildren": true
     }
   ]
 } as const;
@@ -227,7 +202,6 @@ const youtubeAvatarStyleResponse = {
   "tier": null,
   "hasChildren": true,
   "childrenCount": 1,
-  "childrenDisplayType": "select",
   "children": [
     {
       "id": "youtube_avatar_style_1",
