@@ -1,8 +1,8 @@
-export async function fetchFormStep(path: string) {
+export async function fetchRoot(path: string) {
   console.log(`[API] Fetching: ${path}`);
 
   const apiPath = path === '/' ? '/' : path;
-  const url = `/api/form-steps${apiPath}`;
+  const url = `/api/skills-root${apiPath}`;
 
   console.log(`[API] Full URL: ${url}`);
 

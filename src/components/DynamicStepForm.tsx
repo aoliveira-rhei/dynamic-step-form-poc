@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchFormStep } from '../api/mockApi';
+import { fetchRoot } from '../api/mockApi';
 import { FormStep, SelectedStep } from '../types/form';
 import { Badge } from './Badge';
 import { GroupedSelect } from './GroupedSelect';
@@ -15,7 +15,7 @@ export const DynamicStepForm = () => {
     }, []);
 
     const loadRoot = async () => {
-        const response = await fetchFormStep('/');
+        const response = await fetchRoot('/');
 
         if (response.children) {
             setCurrentChildren(response.children);
@@ -28,7 +28,7 @@ export const DynamicStepForm = () => {
             return;
         }
 
-        const response = await fetchFormStep(step.path);
+        const response = await fetchRoot(step.path);
 
         const newStep: SelectedStep = {
             id: step.id,
@@ -51,7 +51,7 @@ export const DynamicStepForm = () => {
             return;
         }
 
-        const response = await fetchFormStep(step.path);
+        const response = await fetchRoot(step.path);
 
         const newStep: SelectedStep = {
             id: step.id,
