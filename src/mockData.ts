@@ -119,6 +119,10 @@ const formatPickerResponse = {
   "tier": null,
   "hasChildren": true,
   "childrenCount": 3,
+  "component_config": {
+    "columns": 6,
+    "display_size": "128px"
+  },
   "children": [
     {
       "id": "yt_avatar",
@@ -147,16 +151,16 @@ const formatPickerResponse = {
       "hasChildren": true
     },
     {
-      "id": "linkedin_avatar",
+      "id": "linkedin_profile",
       "displayKey": "label.linkedin_avatar",
-      "displayValue": "LinkedIn Avatar",
+      "displayValue": "LinkedIn Profile",
       "icon": "linkedin",
       "component": "select_item",
-      "uiGroup": "avatar_styles",
+      "uiGroup": "profile_styles",
       "tier": null,
       "isDefault": null,
       "children": null,
-      "path": "/image_engine/social_media/linkedin_avatar",
+      "path": "/image_engine/social_media/linkedin_profile",
       "hasChildren": true
     }
   ]

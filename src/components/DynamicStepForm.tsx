@@ -128,6 +128,7 @@ export const DynamicStepForm = () => {
                     <GroupedSelect
                         options={currentChildren}
                         onSelect={handleSelectOption}
+                        config={selectedSteps.length > 0 ? selectedSteps[selectedSteps.length - 1].step.component_config : undefined}
                     />
                 )}
 

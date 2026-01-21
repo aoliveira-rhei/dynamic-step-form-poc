@@ -1,5 +1,10 @@
 export type ComponentType = 'root' | 'badge' | 'select_item';
 
+export interface ComponentConfig {
+  columns?: number;
+  display_size?: string;
+}
+
 export interface FormStep {
   id: string;
   path: string;
@@ -14,6 +19,7 @@ export interface FormStep {
   hasChildren: boolean;
   childrenCount?: number;
   children: FormStep[] | null;
+  component_config?: ComponentConfig;
 }
 
 export interface SelectedStep {
