@@ -4,7 +4,9 @@ import {
   imageEngineResponse,
   formatPickerResponse,
   youtubeAvatarResponse,
-  youtubeAvatarStyleResponse
+  youtubeAvatarStyleResponse,
+  shortcustResponse,
+  youtubeAvatarShortcutResponse
 } from '../mockData';
 
 export const handlers = [
@@ -31,5 +33,19 @@ export const handlers = [
   http.get('/api/skills-root/image_engine/format_picker/youtube_avatar/youtube_avatar_style', async () => {
     await delay(500);
     return HttpResponse.json(youtubeAvatarStyleResponse);
+  }),
+
+  http.get('/api/shortcuts', async () => {
+    await delay(500);
+    return HttpResponse.json(shortcustResponse);
+  }),
+
+  http.get('/api/shortcuts/:id', async ({ params }) => {
+    await delay(500);
+    const { id } = params;
+    if (id === 'create_youtube_avatar') {
+      return HttpResponse.json(youtubeAvatarShortcutResponse);
+    }
+    return new HttpResponse(null, { status: 404 });
   }),
 ];

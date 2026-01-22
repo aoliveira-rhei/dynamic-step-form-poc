@@ -19,7 +19,6 @@ export interface FormStep {
   hasChildren: boolean;
   childrenCount?: number;
   children: FormStep[] | null;
-  component_config?: ComponentConfig;
 }
 
 export interface SelectedStep {

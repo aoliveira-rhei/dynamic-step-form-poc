@@ -4,6 +4,10 @@ import { FormStep, SelectedStep } from '../types/form';
 import { Badge } from './Badge';
 import { GroupedSelect } from './GroupedSelect';
 import { SimpleSelect } from './SimpleSelect';
+import { getComponentConfig } from '../config/componentConfig';
+import { ShortcutsList } from './ShortcutsList';
+import { fetchShortcutById } from '../api/shortcutsApi';
+import { processShortcutTree } from '../utils/shortcutProcessor';
 
 export const DynamicStepForm = () => {
     const [selectedSteps, setSelectedSteps] = useState<SelectedStep[]>([]);
@@ -81,6 +85,25 @@ export const DynamicStepForm = () => {
         }
     };
 
+    const handleShortcutSelect = async (shortcutId: string) => {
+        try {
+            const shortcut = await fetchShortcutById(shortcutId);
+
+            if (!shortcut.tree) {
+                console.error('Shortcut has no tree');
+                return;
+            }
+
+            const { selectedSteps: steps, currentChildren: children } =
+                processShortcutTree(shortcut.tree);
+
+            setSelectedSteps(steps);
+            setCurrentChildren(children);
+        } catch (error) {
+            console.error('Error loading shortcut:', error);
+        }
+    };
+
     const currentDisplayType = inferDisplayType(currentChildren);
 
     return (
@@ -128,7 +151,7 @@ export const DynamicStepForm = () => {
                     <GroupedSelect
                         options={currentChildren}
                         onSelect={handleSelectOption}
-                        config={selectedSteps.length > 0 ? selectedSteps[selectedSteps.length - 1].step.component_config : undefined}
+                        config={selectedSteps.length > 0 ? getComponentConfig(selectedSteps[selectedSteps.length - 1].step.id) : undefined}
                     />
                 )}
 
@@ -140,7 +163,8 @@ export const DynamicStepForm = () => {
                 )}
             </div>
 
-
+            {/* Shortcuts List */}
+            <ShortcutsList onShortcutSelect={handleShortcutSelect} />
         </div>
     );
 };
